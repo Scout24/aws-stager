@@ -1,5 +1,5 @@
 from boto.ec2 import connect_to_region
-from candidates import CandidateError, CandidateChooser
+from candidates import CandidateChooser
 
 
 def fetch_candidate(region, candidate_tag_name):
