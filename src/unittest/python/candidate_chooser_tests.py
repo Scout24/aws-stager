@@ -34,3 +34,12 @@ class CandidateChooserTest(unittest.TestCase):
         candidate_chooser.choose_candidate(Mock())
 
         _print.assert_called_with("candidate")
+
+    @patch("aws_stager.candidates.print", create=True)
+    def test_should_delete_candidate_after_printing(self, _):
+        candidate_chooser = CandidateChooser([Mock(res_id="candidate")], "any-tag-name")
+        connection = Mock()
+
+        candidate_chooser.choose_candidate(connection)
+
+        connection.delete_tags.assert_called_with('candidate', ['any-tag-name'])
