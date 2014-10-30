@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 """
+    aws-fetch-candidate
+    ===================
+    Prints out a single AMI ID that corresponds to the AMI that should be
+    promoted next. Bails out with an error if none or more than one AMIs match.
+
 Usage:
     aws-fetch-candidate CANDIDATE_TAG_NAME [options]
 
