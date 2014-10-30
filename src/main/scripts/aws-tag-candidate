@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+"""
+Usage:
+    aws-tag-candidate AMI_ID CANDIDATE_TAG_NAME [options]
+
+Options:
+    --region=STRING     aws region to connect to [default: eu-west-1]
+"""
+
+import sys
+
+from docopt import docopt
+
+arguments_and_options = docopt(__doc__)
+region = arguments_and_options["--region"]
+candidate_tag_name = arguments_and_options["CANDIDATE_TAG_NAME"]
+ami_id = arguments_and_options["AMI_ID"]
+
+try:
+    from boto.ec2 import connect_to_region
+    connection = connect_to_region(region)
+    connection.create_tags([ami_id], {
+        candidate_tag_name: "true",
+    })
+
+except BaseException as e:
+    print("Problem tagging candidate: {0}".format(e))
+    sys.exit(1)
