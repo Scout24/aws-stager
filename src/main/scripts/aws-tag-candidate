@@ -11,6 +11,9 @@ import sys
 
 from docopt import docopt
 
+from aws_stager.candidates import CandidateMarker
+
+
 arguments_and_options = docopt(__doc__)
 region = arguments_and_options["--region"]
 candidate_tag_name = arguments_and_options["CANDIDATE_TAG_NAME"]
@@ -19,10 +22,11 @@ ami_id = arguments_and_options["AMI_ID"]
 try:
     from boto.ec2 import connect_to_region
     connection = connect_to_region(region)
-    connection.create_tags([ami_id], {
-        candidate_tag_name: "true",
-    })
 
+    candidate_marker = CandidateMarker(candidate_tag_name, ami_id)
+
+    candidate_marker.delete_existing_candidate_tags(connection)
+    candidate_marker.mark_candidate(connection)
 except BaseException as e:
-    print("Problem tagging candidate: {0}".format(e))
+    print("Problem marking candidate: {0}".format(e))
     sys.exit(1)
