@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+"""
+Usage:
+    aws-fetch-candidate CANDIDATE_TAG_NAME [options]
+
+Options:
+    --region=STRING     aws region to connect to [default: eu-west-1]
+"""
+
+import sys
+
+from docopt import docopt
+
+from aws_stager import fetch_candidate
+
+
+arguments_and_options = docopt(__doc__)
+region = arguments_and_options["--region"]
+candidate_tag_name = arguments_and_options["CANDIDATE_TAG_NAME"]
+
+try:
+    fetch_candidate(region, candidate_tag_name)
+except BaseException as e:
+    print("Problem fetching candidate: {0}".format(e))
+    sys.exit(1)
