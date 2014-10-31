@@ -49,11 +49,11 @@ def set_properties(project):
     project.depends_on("boto")
 
     project.set_property('flake8_verbose_output', True)
-    project.set_property('coverage_break_build', False)
+    project.set_property('flake8_break_build', True)
     project.set_property('flake8_include_test_sources', True)
     project.set_property('flake8_include_scripts', True)
     project.set_property('flake8_ignore', 'E501')
-    project.set_property('flake8_break_build', False)
+    project.set_property('coverage_break_build', True)
 
     project.set_property('copy_resources_target', '$dir_dist')
     project.get_property('copy_resources_glob').append('setup.cfg')
