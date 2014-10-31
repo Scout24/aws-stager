@@ -31,6 +31,7 @@ use_plugin("python.distutils")
 use_plugin("copy_resources")
 use_plugin("python.frosted")
 use_plugin("python.pycharm")
+use_plugin("python.cram")
 
 
 name = "aws-stager"

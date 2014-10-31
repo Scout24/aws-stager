@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #  The MIT License (MIT)
 #
 #  Copyright (c) 2014 ImmobilienScout GmbH
@@ -21,34 +20,15 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-"""
-Usage:
-    aws-tag-candidate AMI_ID CANDIDATE_TAG_NAME [options]
+  $ aws-fetch-candidate -h
+      aws-fetch-candidate
+      ===================
+      Prints out a single AMI ID that corresponds to the AMI that should be
+      promoted next. Bails out with an error if none or more than one AMIs match.
+  
+  Usage:
+      aws-fetch-candidate CANDIDATE_TAG_NAME [options]
+  
+  Options:
+      --region=STRING     aws region to connect to [default: eu-west-1]
 
-Options:
-    --region=STRING     aws region to connect to [default: eu-west-1]
-"""
-
-import sys
-
-from docopt import docopt
-
-from aws_stager.candidates import CandidateMarker
-
-
-arguments_and_options = docopt(__doc__)
-region = arguments_and_options["--region"]
-candidate_tag_name = arguments_and_options["CANDIDATE_TAG_NAME"]
-ami_id = arguments_and_options["AMI_ID"]
-
-try:
-    from boto.ec2 import connect_to_region
-    connection = connect_to_region(region)
-
-    candidate_marker = CandidateMarker(candidate_tag_name, ami_id)
-
-    candidate_marker.delete_existing_candidate_tags(connection)
-    candidate_marker.mark_candidate(connection)
-except BaseException as e:
-    print("Problem marking candidate: {0}".format(e))
-    sys.exit(1)
