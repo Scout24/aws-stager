@@ -19,9 +19,11 @@
 #  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
+from __future__ import absolute_import
 
 from boto.ec2 import connect_to_region
-from candidates import CandidateChooser, CANDIDATE_MARK_KEY
+
+from aws_stager.candidates import CandidateChooser, CANDIDATE_MARK_KEY
 
 
 def fetch_candidate(region, candidate_tag_name):
