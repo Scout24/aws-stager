@@ -21,8 +21,8 @@ Minimal example:
 * Fetch ami tagged with `deploy-tested`, deploy it to prod environment.
 
 
-`aws-tag-candidate AMI_ID CANDIDATE_TAG_NAME`
-=============================================
+## `aws-tag-candidate AMI_ID CANDIDATE_TAG_NAME`
+
 
 Tags the ami defined by `AMI_ID` with 
 `"aws-staging-mark" = CANDIDATE_TAG_NAME`
@@ -31,8 +31,7 @@ All tags are delete from AMIs previously tagged with this key/value pair.
 
 The AMI-id will then be available for retrieval by your build chain using :
 
-`aws-fetch-candidate CANDIDATE_TAG_NAME`
-========================================
+## `aws-fetch-candidate CANDIDATE_TAG_NAME`
 
 Outputs the AMI-id (and nothing else) in case there is exactly one AMI
 tagged with 
