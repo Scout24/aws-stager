@@ -1,4 +1,4 @@
-aws-stager
+aws-stager [![Build Status](https://travis-ci.org/ImmobilienScout24/aws-stager.svg?branch=master)](https://travis-ci.org/ImmobilienScout24/aws-stager)
 ==========
 
 Stage your AMIs using EC2 tags.
