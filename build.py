@@ -43,9 +43,10 @@ version = "0.0.1"
 def set_properties(project):
     project.set_property("verbose", True)
 
+    project.build_depends_on("mock")
+
     project.depends_on("docopt")
     project.depends_on("boto")
-    project.build_depends_on("mock")
 
     project.set_property('flake8_verbose_output', True)
     project.set_property('coverage_break_build', False)
