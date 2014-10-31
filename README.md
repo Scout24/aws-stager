@@ -21,6 +21,10 @@ Minimal example:
 * Fetch ami tagged with `deploy-tested`, deploy it to prod environment.
 
 
+Usage
+=====
+
+
 ### `aws-tag-candidate AMI_ID CANDIDATE_TAG_NAME`
 
 
