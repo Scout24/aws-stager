@@ -3,7 +3,7 @@ from candidates import CandidateChooser, CANDIDATE_MARK_KEY
 
 
 def fetch_candidate(region, candidate_tag_name):
-    connection = connect_to_region("eu-west-1")
+    connection = connect_to_region(region)
     candidates = connection.get_all_tags(filters={
                                          "resource-type": "image",
                                          "key": CANDIDATE_MARK_KEY,
