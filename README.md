@@ -1,7 +1,7 @@
 aws-stager
 ==========
 
-Stage your AMIs using tags.
+Stage your AMIs using EC2 tags.
 
 
 Intent
@@ -11,10 +11,14 @@ Allow separated build steps to share AMI-ids through the AWS tagging feature.
 Minimal example:
 
 ### Build config 1:
-Build ami, deploy it, tag it with `deploy-tested`
+
+* Build ami, deploy it
+* Run system tests on it
+* Tag it with `deploy-tested`
 
 ### Build config 2:
-Fetch ami tagged with `deploy-tested`, deploy it to prod environment.
+
+* Fetch ami tagged with `deploy-tested`, deploy it to prod environment.
 
 
 `aws-tag-candidate AMI_ID CANDIDATE_TAG_NAME`
