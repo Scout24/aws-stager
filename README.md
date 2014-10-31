@@ -42,3 +42,8 @@ tagged with
 `"aws-staging-mark" = CANDIDATE_TAG_NAME`
 
 In case several (or no) AMIs have this tag, this will produce an error.
+
+
+License
+=======
+MIT. See license file.
