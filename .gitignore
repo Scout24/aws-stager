@@ -3,3 +3,7 @@ venv
 *.pyc
 *.pyo
 .coverage
+
+# IntelliJ IDEA / PyCharm
+.idea
+*.iml
