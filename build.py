@@ -20,6 +20,8 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
+import sys
+
 from pybuilder.core import use_plugin, init
 
 use_plugin("python.core")
@@ -31,7 +33,8 @@ use_plugin("python.distutils")
 use_plugin("copy_resources")
 use_plugin("python.frosted")
 use_plugin("python.pycharm")
-use_plugin("python.cram")
+if sys.version_info[0:2] == (2, 6):
+    use_plugin("python.cram") # we have a 2.6 shebang in the scripts
 
 
 name = "aws-stager"
