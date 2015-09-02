@@ -36,7 +36,7 @@ class CandidateChooser(object):
         self.candidates = candidates
         self.candidate_tag_name = candidate_tag_name
 
-    def validate_candidates(self, connection):
+    def _validate_candidates(self):
         if not self.candidates:
             raise CandidateError("There are no AMIs tagged with {0}".format(
                 self.candidate_tag_name))
@@ -45,13 +45,9 @@ class CandidateChooser(object):
             raise CandidateError("There is more than one AMI tagged with {0}. Giving up.".format(
                 self.candidate_tag_name))
 
-    def choose_candidate(self, connection):
-        sole_candidate = self.candidates[0]
-
-        candidate_ami = sole_candidate.res_id
-        connection.delete_tags(candidate_ami, {CANDIDATE_MARK_KEY: self.candidate_tag_name})
-
-        print(candidate_ami)
+    def choose_candidate(self):
+        self._validate_candidates()
+        print(self.candidates[0].res_id)
 
 
 class CandidateMarker(object):

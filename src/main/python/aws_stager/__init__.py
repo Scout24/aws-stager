@@ -36,6 +36,4 @@ def fetch_candidate(region, candidate_tag_name):
 
     candidate_chooser = CandidateChooser(candidates, candidate_tag_name)
 
-    candidate_chooser.validate_candidates(connection)
-
-    candidate_chooser.choose_candidate(connection)
+    candidate_chooser.choose_candidate()

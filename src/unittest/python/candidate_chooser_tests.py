@@ -32,27 +32,18 @@ class CandidateChooserTest(unittest.TestCase):
     def test_should_enforce_at_least_one_candidate_found(self):
         candidate_chooser = CandidateChooser([], "any-tag-name")
         self.assertRaises(CandidateError,
-                          candidate_chooser.validate_candidates, Mock())
+                          candidate_chooser.choose_candidate)
 
     def test_should_enforce_no_more_than_one_candidate_found(self):
         candidate_chooser = CandidateChooser([Mock(), Mock()],
                                              "any-tag-name")
         self.assertRaises(CandidateError,
-                          candidate_chooser.validate_candidates, Mock())
+                          candidate_chooser.choose_candidate)
 
     @patch("aws_stager.candidates.print", create=True)
     def test_should_print_candidate(self, _print):
         candidate_chooser = CandidateChooser([Mock(res_id="candidate")], "any-tag-name")
 
-        candidate_chooser.choose_candidate(Mock())
+        candidate_chooser.choose_candidate()
 
         _print.assert_called_with("candidate")
-
-    @patch("aws_stager.candidates.print", create=True)
-    def test_should_delete_candidate_after_printing(self, _):
-        candidate_chooser = CandidateChooser([Mock(res_id="candidate")], "any-tag-name")
-        connection = Mock()
-
-        candidate_chooser.choose_candidate(connection)
-
-        connection.delete_tags.assert_called_with('candidate', {'aws-staging-mark': 'any-tag-name'})
