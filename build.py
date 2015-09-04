@@ -27,14 +27,13 @@ from pybuilder.core import use_plugin, init
 use_plugin("python.core")
 use_plugin("python.unittest")
 use_plugin("python.install_dependencies")
-use_plugin("python.flake8")
 use_plugin("python.coverage")
 use_plugin("python.distutils")
 use_plugin("copy_resources")
 use_plugin("python.frosted")
 use_plugin("python.pycharm")
-if sys.version_info[0:2] == (2, 6):
-    use_plugin("python.cram") # we have a 2.6 shebang in the scripts
+if sys.version_info[0:2] >= (2, 7):
+    use_plugin("python.flake8") # broken with 2.6
 
 
 name = "aws-stager"
