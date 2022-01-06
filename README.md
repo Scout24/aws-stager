@@ -1,5 +1,6 @@
 aws-stager [![Build Status](https://travis-ci.org/ImmobilienScout24/aws-stager.svg?branch=master)](https://travis-ci.org/ImmobilienScout24/aws-stager)[![Coverage Status](https://img.shields.io/coveralls/ImmobilienScout24/aws-stager.svg)](https://coveralls.io/r/ImmobilienScout24/aws-stager)
 ==========
+# This project is DEPRECATED and not any longer supported
 
 Stage your AMIs using EC2 tags.
 
